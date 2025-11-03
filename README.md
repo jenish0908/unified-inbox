@@ -1,4 +1,5 @@
-# Unified Inbox - Multi-Channel Customer Outreach Platform
+# Unified Inbox - Multi-Channel Customer Outreach Platform (access the trial video link below)
+https://www.youtube.com/watch?v=RCDmef1kJjc
 
 A full-stack unified communication platform built with Next.js that aggregates messages from SMS, WhatsApp, and optionally email/social media into a single inbox. Built for Attack Capital Assignment.
 
