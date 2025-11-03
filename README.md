@@ -270,9 +270,6 @@ Visit [http://localhost:3000](http://localhost:3000)
 |---------|---------|----------------|-------------|---------------|--------------------------|
 | **SMS (Twilio)** | 1-3s | $0.0075 | 99.95% | Yes (MMS) | ⭐⭐ Low |
 | **WhatsApp (Twilio)** | 1-2s | $0.005 | 99.9% | Yes | ⭐⭐ Low |
-| **Email (Resend)** | 2-5s | $0.0001 | 99.5% | Yes | ⭐⭐⭐ Medium |
-| **Twitter DMs** | 3-5s | Free | 98% | Yes | ⭐⭐⭐⭐ High |
-| **Facebook Messenger** | 2-4s | Free | 99% | Yes | ⭐⭐⭐⭐ High |
 
 ### Integration Analysis
 
