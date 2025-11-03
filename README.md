@@ -147,12 +147,6 @@ erDiagram
     }
 ```
 
-### Models
-
-#### User
-- Authentication and team member management
-- Roles: `viewer`, `editor`, `admin`
-
 #### Contact
 - Unified contact with multiple communication channels
 - Auto-created from incoming messages
