@@ -1,0 +1,84 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  password      String
+  name          String?
+  role          String    @default("editor") // viewer, editor, admin
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  messages      Message[]
+  notes         Note[]
+  sentMessages  Message[] @relation("SentBy")
+}
+
+model Contact {
+  id            String    @id @default(cuid())
+  name          String?
+  phone         String?
+  email         String?
+  whatsapp      String?
+  instagram     String?
+  avatar        String?
+  tags          String[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  messages      Message[]
+  notes         Note[]
+}
+
+model Message {
+  id            String    @id @default(cuid())
+  contactId     String
+  contact       Contact   @relation(fields: [contactId], references: [id], onDelete: Cascade)
+  
+  channel       String    // sms, whatsapp, email, instagram
+  direction     String    // inbound, outbound
+  content       String
+  status        String    @default("sent") // sent, delivered, read, failed, scheduled
+  isRead        Boolean   @default(false)
+  
+  mediaUrl      String?
+  
+  userId        String?
+  user          User?     @relation(fields: [userId], references: [id])
+  
+  sentById      String?
+  sentBy        User?     @relation("SentBy", fields: [sentById], references: [id])
+  
+  scheduledFor  DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  @@index([contactId])
+  @@index([channel])
+  @@index([status])
+  @@index([isRead])
+}
+
+model Note {
+  id            String    @id @default(cuid())
+  contactId     String
+  contact       Contact   @relation(fields: [contactId], references: [id], onDelete: Cascade)
+  
+  userId        String
+  user          User      @relation(fields: [userId], references: [id])
+  
+  content       String
+  isPrivate     Boolean   @default(false)
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  @@index([contactId])
+}
