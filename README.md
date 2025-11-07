@@ -637,9 +637,6 @@ MIT License - feel free to use this project for learning or commercial purposes.
 
 Contributions welcome! Please open an issue or PR.
 
-## 📧 Contact
-
-For questions about this submission, contact: [your-email@example.com]
 
 ---
 
